@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './index.css';
+import Movie from './compenents/Movies';
+
+const API_KEY = '&apikey=e1cb94d0';
+const FEATURED_MOVIES = 'http://www.omdbapi.com/?s=man';
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(FEATURED_MOVIES + API_KEY)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.Search);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {movies.length > 0 &&
+        movies.map((movie) => <Movie key={movie.imdbID} {...movie} />)}
     </div>
   );
 }
