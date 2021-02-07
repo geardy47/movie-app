@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ecf0f1;
+  justify-content: center;
+}
+
+.movie {
+  background-color: #bdc3c7;
+  margin: 1rem;
+  width: 250px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.movie img {
+  max-width: 100%;
+}
+
+.movie-name {
+  padding: 1rem;
+  align-items: center;
+}
+
+.movie-name h3 {
+  margin: 0;
+}
